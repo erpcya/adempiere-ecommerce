@@ -6,9 +6,8 @@ LABEL maintainer="EdwinBetanc0urt@outlook.com; rMunoz@erpya.com; ySenih@erpya.co
 ARG BASE_VERSION="1.12.2"
 
 ENV VS_ENV=prod \
-        REPO_NAME="eCommerce" \
-        PREFIX="v" \
-        URL_REPO="https://github.com/adempiere/eCommerce/archive" \
+        REPO_NAME="vue-storefront" \
+        URL_REPO="https://github.com/vuestorefront/vue-storefront/archive" \
         BINARY_NAME="$BASE_VERSION" \
         SERVER_HOST="localhost" \
         SERVER_PORT="3000" \
@@ -32,7 +31,7 @@ RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
         curl && \
         echo "Downloading ... $URL_REPO/$BASE_VERSION.zip" && \
         curl --output "$BINARY_NAME.zip" \
-                -L "$URL_REPO/$PREFIX$BASE_VERSION.zip" && \
+                -L "$URL_REPO/$BASE_VERSION.zip" && \
         unzip -o $BINARY_NAME.zip && \
         rm $BINARY_NAME.zip && \
         cd $REPO_NAME-$BINARY_NAME && \
