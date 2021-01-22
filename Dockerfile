@@ -3,9 +3,10 @@ FROM node:10-alpine
 LABEL maintainer="EdwinBetanc0urt@outlook.com; rMunoz@erpya.com; ySenih@erpya.com" \
         description="Front-end e-commerce for ADempiere"
 
-ARG BASE_VERSION="v1.12.2"
+ARG BASE_VERSION="1.12.2"
 
 ENV VS_ENV=prod \
+        PREFIX="v" \
         REPO_NAME="vue-storefront" \
         URL_REPO="https://github.com/vuestorefront/vue-storefront/archive" \
         BINARY_NAME="$BASE_VERSION" \
@@ -31,7 +32,7 @@ RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
         curl && \
         echo "Downloading ... $URL_REPO/$BASE_VERSION.zip" && \
         curl --output "$BINARY_NAME.zip" \
-                -L "$URL_REPO/$BASE_VERSION.zip" && \
+                -L "$URL_REPO/$PREFIX$BASE_VERSION.zip" && \
         unzip -o $BINARY_NAME.zip && \
         rm $BINARY_NAME.zip && \
         cd $REPO_NAME-$BINARY_NAME && \
