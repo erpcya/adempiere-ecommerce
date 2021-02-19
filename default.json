@@ -113,7 +113,7 @@
   },
   "elasticsearch": {
     "httpAuth": "",
-    "host": "/api/catalog",
+    "host": "/adempiere-api/catalog",
     "index": "vue_storefront_catalog",
     "min_score": 0.02,
     "csrTimeout": 5000,
@@ -191,7 +191,7 @@
       "url": "/de",
       "appendStoreCode": true,
       "elasticsearch": {
-        "host": "/api/catalog",
+        "host": "/adempiere-api/catalog",
         "index": "vue_storefront_catalog_de"
       },
       "tax": {
@@ -222,7 +222,7 @@
       "url": "/it",
       "appendStoreCode": true,
       "elasticsearch": {
-        "host": "/api/catalog",
+        "host": "/adempiere-api/catalog",
         "index": "vue_storefront_catalog_it"
       },
       "tax": {
@@ -560,17 +560,17 @@
     "displayItemDiscounts": true,
     "productsAreReconfigurable": true,
     "minicartCountType": "quantities",
-    "create_endpoint": "/api/cart/create?token={{token}}",
-    "updateitem_endpoint": "/api/cart/update?token={{token}}&cartId={{cartId}}",
-    "deleteitem_endpoint": "/api/cart/delete?token={{token}}&cartId={{cartId}}",
-    "pull_endpoint": "/api/cart/pull?token={{token}}&cartId={{cartId}}",
-    "totals_endpoint": "/api/cart/totals?token={{token}}&cartId={{cartId}}",
-    "paymentmethods_endpoint": "/api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
-    "shippingmethods_endpoint": "/api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
-    "shippinginfo_endpoint": "/api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
-    "collecttotals_endpoint": "/api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
-    "deletecoupon_endpoint": "/api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
-    "applycoupon_endpoint": "/api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
+    "create_endpoint": "/adempiere-api/cart/create?token={{token}}",
+    "updateitem_endpoint": "/adempiere-api/cart/update?token={{token}}&cartId={{cartId}}",
+    "deleteitem_endpoint": "/adempiere-api/cart/delete?token={{token}}&cartId={{cartId}}",
+    "pull_endpoint": "/adempiere-api/cart/pull?token={{token}}&cartId={{cartId}}",
+    "totals_endpoint": "/adempiere-api/cart/totals?token={{token}}&cartId={{cartId}}",
+    "paymentmethods_endpoint": "/adempiere-api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
+    "shippingmethods_endpoint": "/adempiere-api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
+    "shippinginfo_endpoint": "/adempiere-api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
+    "collecttotals_endpoint": "/adempiere-api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
+    "deletecoupon_endpoint": "/adempiere-api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
+    "applycoupon_endpoint": "/adempiere-api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
   },
   "attributes": {
     "disablePersistentAttributesCache": false
@@ -619,7 +619,7 @@
     "waitForPlatformSync": false,
     "setupVariantByAttributeCode": true,
     "calculateBundlePriceByOptions": true,
-    "endpoint": "/api/product",
+    "endpoint": "/adempiere-api/product",
     "defaultFilters": [
       "color",
       "erin_recommends",
@@ -677,7 +677,7 @@
   },
   "orders": {
     "directBackendSync": true,
-    "endpoint": "/api/order",
+    "endpoint": "/adempiere-api/order",
     "payment_methods_mapping": {
     },
     "offline_orders": {
@@ -712,27 +712,27 @@
     ]
   },
   "reviews": {
-    "create_endpoint": "/api/review/create"
+    "create_endpoint": "/adempiere-api/review/create"
   },
   "users": {
     "autoRefreshTokens": true,
     "loginAfterCreatePassword": true,
-    "endpoint": "/api/user",
-    "history_endpoint": "/api/user/order-history?token={{token}}&pageSize={{pageSize}}&currentPage={{currentPage}}",
-    "resetPassword_endpoint": "/api/user/reset-password",
-    "createPassword_endpoint": "http://localhost:8080/api/user/create-password",
-    "changePassword_endpoint": "/api/user/change-password?token={{token}}",
-    "login_endpoint": "/api/user/login",
-    "create_endpoint": "/api/user/create",
-    "me_endpoint": "/api/user/me?token={{token}}",
-    "refresh_endpoint": "/api/user/refresh",
+    "endpoint": "/adempiere-api/user",
+    "history_endpoint": "/adempiere-api/user/order-history?token={{token}}&pageSize={{pageSize}}&currentPage={{currentPage}}",
+    "resetPassword_endpoint": "/adempiere-api/user/reset-password",
+    "createPassword_endpoint": "http://localhost:8080/adempiere-api/user/create-password",
+    "changePassword_endpoint": "/adempiere-api/user/change-password?token={{token}}",
+    "login_endpoint": "/adempiere-api/user/login",
+    "create_endpoint": "/adempiere-api/user/create",
+    "me_endpoint": "/adempiere-api/user/me?token={{token}}",
+    "refresh_endpoint": "/adempiere-api/user/refresh",
     "allowModification": ["firstname", "lastname", "email", "addresses"],
     "tokenInHeader": false
   },
   "stock": {
     "synchronize": true,
     "allowOutOfStockInCart": true,
-    "endpoint": "/api/stock"
+    "endpoint": "/adempiere-api/stock"
   },
   "images": {
     "useExactUrlsNoProxy": false,
@@ -798,12 +798,12 @@
     "image/png": "7d"
   },
   "newsletter": {
-    "endpoint": "/api/ext/mailchimp-subscribe/subscribe"
+    "endpoint": "/adempiere-api/ext/mailchimp-subscribe/subscribe"
   },
   "mailer": {
     "endpoint": {
-      "send": "/api/ext/mail-service/send-email",
-      "token": "/api/ext/mail-service/get-token"
+      "send": "/adempiere-api/ext/mail-service/send-email",
+      "token": "/adempiere-api/ext/mail-service/get-token"
     },
     "contactAddress": "contributors@vuestorefront.io",
     "sendConfirmation": true
@@ -831,8 +831,8 @@
     "id": false
   },
   "cms": {
-    "endpoint": "/api/ext/cms-data/cms{{type}}/{{cmsId}}",
-    "endpointIdentifier": "/api/ext/cms-data/cms{{type}}Identifier/{{cmsIdentifier}}/storeId/{{storeId}}"
+    "endpoint": "/adempiere-api/ext/cms-data/cms{{type}}/{{cmsId}}",
+    "endpointIdentifier": "/adempiere-api/ext/cms-data/cms{{type}}Identifier/{{cmsIdentifier}}/storeId/{{storeId}}"
   },
   "cms_block": {
     "max_count": 500
@@ -870,8 +870,8 @@
   },
   "urlModule": {
     "enableMapFallbackUrl": false,
-    "endpoint": "/api/url",
-    "map_endpoint": "/api/url/map"
+    "endpoint": "/adempiere-api/url",
+    "map_endpoint": "/adempiere-api/url/map"
   },
   "fastly": {
     "enabled":false
