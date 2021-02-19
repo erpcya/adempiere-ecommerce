@@ -3,46 +3,48 @@ FROM node:10-alpine
 LABEL maintainer="EdwinBetanc0urt@outlook.com; rMunoz@erpya.com; ySenih@erpya.com" \
         description="Front-end e-commerce for ADempiere"
 
-ARG BASE_VERSION="1.12.2"
-
 ENV VS_ENV=prod \
         PREFIX="v" \
-        REPO_NAME="vue-storefront" \
-        URL_REPO="https://github.com/vuestorefront/vue-storefront/archive" \
+        REPO_NAME="eCommerce" \
+        URL_REPO="https://github.com/adempiere/eCommerce.git" \
         BINARY_NAME="$BASE_VERSION" \
         SERVER_HOST="localhost" \
         SERVER_PORT="3000" \
         API_HOST="localhost" \
-        API_PORT="8085"
-        
+        API_PORT="8085" \
+        STORE_INDEX="vue_storefront_catalog"
 
 WORKDIR /var/www
 
 RUN apk add --no-cache --virtual .build-deps ca-certificates wget python make g++ \
   && apk add --no-cache git \
   && yarn install --no-cache \
-  && apk del .build-deps
-RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf && \
+  && apk del .build-deps && \
     apk --no-cache --update upgrade musl && \
     apk add --no-cache \
                 --repository http://dl-cdn.alpinelinux.org/alpine/edge/community \
                 --repository http://dl-cdn.alpinelinux.org/alpine/edge/main \
                 --virtual .build-deps \
-        unzip \
-        curl && \
-        echo "Downloading ... $URL_REPO/$BASE_VERSION.zip" && \
-        curl --output "$BINARY_NAME.zip" \
-                -L "$URL_REPO/$PREFIX$BASE_VERSION.zip" && \
-        unzip -o $BINARY_NAME.zip && \
-        rm $BINARY_NAME.zip && \
-        cd $REPO_NAME-$BINARY_NAME && \
-        yarn install --no-cache
+     unzip \
+     curl && \
+     echo "Downloading ... $URL_REPO" && \
+     git clone $URL_REPO && \
+     cd $REPO_NAME && \
+     yarn  && \
+     npm install -g lerna && \
+     git submodule add -b master https://github.com/DivanteLtd/vsf-capybara.git src/themes/capybara && \
+     git submodule update --init --remote && \
+     sed -i "s|src/themes/default/|src/themes/capybara|g"  /var/www/$REPO_NAME/tsconfig.json && \
+     cd  /var/www/$REPO_NAME/src/themes/capybara &&  yarn && \
+     node  /var/www/$REPO_NAME/src/themes/capybara/scripts/generate-local-config.js && \ 
+     cd /var/www/$REPO_NAME/  && npm install -g lerna
 
-COPY vue-storefront.sh /usr/local/bin/
-COPY default.json /var/www/$REPO_NAME-$BINARY_NAME/config
+COPY default.json /var/www/$REPO_NAME/config
 
-CMD CMD sed -i "s|SERVER_HOST|$SERVER_HOST|g"  /var/www/$REPO_NAME-$BINARY_NAME/config/default.json && \
-    sed -i "s|SERVER_PORT|$SERVER_PORT|g"  /var/www/$REPO_NAME-$BINARY_NAME/config/default.json && \
-    sed -i "s|API_HOST|$ES_HOST|g"  /var/www/$REPO_NAME-$BINARY_NAME/config/default.json && \
-    sed -i "s|API_PORT|$ES_PORT|g"  /var/www/$REPO_NAME-$BINARY_NAME/config/default.json && \
-    sh vue-storefront.sh && tail -f /dev/null
+CMD sed -i "s|SERVER_HOST|$SERVER_HOST|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|SERVER_PORT|$SERVER_PORT|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|API_HOST|$API_HOST|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|API_PORT|$API_PORT|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|vue_storefront_catalog|$STORE_INDEX|g"  /var/www/$REPO_NAME/config/default.json && \
+    cd /var/www/$REPO_NAME/ && \
+    /var/www/eCommerce/v/bin/lerna bootstrap && yarn build && yarn start && tail -f /dev/null
