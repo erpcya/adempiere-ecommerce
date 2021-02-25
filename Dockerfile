@@ -4,14 +4,10 @@ LABEL maintainer="EdwinBetanc0urt@outlook.com; rMunoz@erpya.com; ySenih@erpya.co
         description="Front-end e-commerce for ADempiere"
 
 ENV VS_ENV=prod \
-        PREFIX="v" \
         REPO_NAME="eCommerce" \
         URL_REPO="https://github.com/adempiere/eCommerce.git" \
-        BINARY_NAME="$BASE_VERSION" \
-        SERVER_HOST="localhost" \
         SERVER_PORT="3000" \
-        API_HOST="localhost" \
-        API_PORT="8085" \
+        API_URL="http:\/\/localhost:8085" \
         STORE_INDEX="vue_storefront_catalog"
 
 WORKDIR /var/www
@@ -41,10 +37,9 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates wget python make g+
 
 COPY default.json /var/www/$REPO_NAME/config
 
-CMD sed -i "s|SERVER_HOST|$SERVER_HOST|g"  /var/www/$REPO_NAME/config/default.json && \
+CMD sed -i "s|SERVER_HOST|$(hostname)|g"  /var/www/$REPO_NAME/config/default.json && \
     sed -i "s|SERVER_PORT|$SERVER_PORT|g"  /var/www/$REPO_NAME/config/default.json && \
-    sed -i "s|API_HOST|$API_HOST|g"  /var/www/$REPO_NAME/config/default.json && \
-    sed -i "s|API_PORT|$API_PORT|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|API_URL|$API_URL|g"  /var/www/$REPO_NAME/config/default.json && \
     sed -i "s|vue_storefront_catalog|$STORE_INDEX|g"  /var/www/$REPO_NAME/config/default.json && \
     cd /var/www/$REPO_NAME/ && \
     /var/www/eCommerce/v/bin/lerna bootstrap && yarn build && yarn start && tail -f /dev/null

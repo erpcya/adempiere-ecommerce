@@ -23,10 +23,8 @@ Run the latest container with:
 docker run -it -d \
     --name eCommerce-ADempiere \
 	-p 3000:3000 \
-	-e "API_PORT=8085" \
-	-e "API_HOST=localhost" \
+	-e "API_URL=http:\/\/localhost:8085" \
 	-e "SERVER_PORT=3000" \
-	-e "SERVER_HOST=localhost" \
 	-e "VS_ENV=prod" \
 	erpya/ecommerce
 ```

@@ -113,7 +113,7 @@
   },
   "elasticsearch": {
     "httpAuth": "",
-    "host": "/adempiere-api/catalog",
+    "host": "/api/catalog",
     "index": "vue_storefront_catalog",
     "min_score": 0.02,
     "csrTimeout": 5000,
@@ -276,8 +276,8 @@
       ],
       "filterFields": {},
       "breadcrumbFilterFields": {},
-      "categoriesRootCategorylId": 2,
-      "categoriesDynamicPrefetchLevel": 2,
+      "categoriesRootCategorylId": 0,
+      "categoriesDynamicPrefetchLevel": 0,
       "categoriesDynamicPrefetch": true,
       "validSearchOptionsFromRouteParams": [
         "url-key",
