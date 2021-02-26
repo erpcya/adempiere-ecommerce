@@ -808,7 +808,7 @@
     "contactAddress": "contributors@vuestorefront.io",
     "sendConfirmation": true
   },
-  "theme": "@vue-storefront/theme-default",
+  "theme": "@vue-storefront/theme-capybara",
   "analytics": {
     "id": false
   },
