@@ -30,10 +30,9 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates wget python make g+
      git submodule update --init --remote && \
      sed -i "s|src/themes/default/|src/themes/capybara|g"  /var/www/$REPO_NAME/tsconfig.json && \
      cd  /var/www/$REPO_NAME/src/themes/capybara &&  yarn && \
-     node  /var/www/$REPO_NAME/src/themes/capybara/scripts/generate-local-config.js && \ 
-     chmod -R 777 /var/www/$REPO_NAME && \
-     cd /var/www/$REPO_NAME/  && npm install -g lerna
-
+     node  /var/www/$REPO_NAME/src/themes/capybara/scripts/generate-local-config.js && \
+     cd /var/www/$REPO_NAME/  && npm install -g lerna && \
+     chmod -R 777 /var/www/$REPO_NAME
 COPY default.json /var/www/$REPO_NAME/config
 
 CMD sed -i "s|SERVER_HOST|$(hostname)|g"  /var/www/$REPO_NAME/config/default.json && \
