@@ -8,7 +8,9 @@ ENV VS_ENV=prod \
         URL_REPO="https://github.com/adempiere/eCommerce.git" \
         SERVER_PORT="3000" \
         API_URL="http:\/\/localhost:8085" \
-        STORE_INDEX="vue_storefront_catalog"
+        STORE_INDEX="vue_storefront_catalog" \
+        MEMORY_RESTART="1G" \
+        EXEC_INSTANCES="4"
 
 WORKDIR /var/www
 
@@ -34,10 +36,13 @@ RUN apk add --no-cache --virtual .build-deps ca-certificates wget python make g+
      cd /var/www/$REPO_NAME/  && npm install -g lerna && \
      chmod -R 777 /var/www/$REPO_NAME
 COPY default.json /var/www/$REPO_NAME/config
+COPY ecosystem.json /var/www/$REPO_NAME
 
 CMD sed -i "s|SERVER_HOST|$(hostname)|g"  /var/www/$REPO_NAME/config/default.json && \
     sed -i "s|SERVER_PORT|$SERVER_PORT|g"  /var/www/$REPO_NAME/config/default.json && \
     sed -i "s|API_URL|$API_URL|g"  /var/www/$REPO_NAME/config/default.json && \
     sed -i "s|vue_storefront_catalog|$STORE_INDEX|g"  /var/www/$REPO_NAME/config/default.json && \
+    sed -i "s|MEMORY_RESTART|$MEMORY_RESTART|g"  /var/www/$REPO_NAME/ecosystem.json && \
+    sed -i "s|EXEC_INSTANCES|$EXEC_INSTANCES|g"  /var/www/$REPO_NAME/ecosystem.json && \
     cd /var/www/$REPO_NAME/ && \
     /usr/local/bin/lerna bootstrap && yarn build && yarn start && tail -f /dev/null
