@@ -10,7 +10,7 @@ ENV VS_ENV=prod \
         API_URL="http:\/\/localhost:8085" \
         STORE_INDEX="vue_storefront_catalog" \
         MEMORY_RESTART="1G" \
-        EXEC_INSTANCES="4"
+        EXEC_INSTANCES="1"
 
 WORKDIR /var/www
 
