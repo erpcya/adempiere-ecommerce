@@ -29,7 +29,7 @@
     ],
     "invalidateCacheKey": "aeSu7aip",
     "invalidateCacheForwarding": false,
-    "invalidateCacheForwardUrl": "http://API_HOST:API_PORT/invalidate?key=aeSu7aip&tag=",
+    "invalidateCacheForwardUrl": "API_URL/invalidate?key=aeSu7aip&tag=",
     "dynamicConfigReload": true,
     "dynamicConfigContinueOnError": false,
     "dynamicConfigExclude": [
@@ -108,7 +108,7 @@
     "port": 8080
   },
   "api": {
-    "url": "http://API_HOST:API_PORT",
+    "url": "API_URL",
     "saveBandwidthOverCache": true
   },
   "elasticsearch": {
