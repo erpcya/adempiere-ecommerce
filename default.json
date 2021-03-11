@@ -191,7 +191,7 @@
       "url": "/de",
       "appendStoreCode": true,
       "elasticsearch": {
-        "host": "/adempiere-api/catalog",
+        "host": "/adempiere-store/catalog",
         "index": "vue_storefront_catalog_de"
       },
       "tax": {
@@ -222,7 +222,7 @@
       "url": "/it",
       "appendStoreCode": true,
       "elasticsearch": {
-        "host": "/adempiere-api/catalog",
+        "host": "/adempiere-store/catalog",
         "index": "vue_storefront_catalog_it"
       },
       "tax": {
@@ -560,17 +560,17 @@
     "displayItemDiscounts": true,
     "productsAreReconfigurable": true,
     "minicartCountType": "quantities",
-    "create_endpoint": "/adempiere-api/cart/create?token={{token}}",
-    "updateitem_endpoint": "/adempiere-api/cart/update?token={{token}}&cartId={{cartId}}",
-    "deleteitem_endpoint": "/adempiere-api/cart/delete?token={{token}}&cartId={{cartId}}",
-    "pull_endpoint": "/adempiere-api/cart/pull?token={{token}}&cartId={{cartId}}",
-    "totals_endpoint": "/adempiere-api/cart/totals?token={{token}}&cartId={{cartId}}",
-    "paymentmethods_endpoint": "/adempiere-api/cart/payment-methods?token={{token}}&cartId={{cartId}}",
-    "shippingmethods_endpoint": "/adempiere-api/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
-    "shippinginfo_endpoint": "/adempiere-api/cart/shipping-information?token={{token}}&cartId={{cartId}}",
-    "collecttotals_endpoint": "/adempiere-api/cart/collect-totals?token={{token}}&cartId={{cartId}}",
-    "deletecoupon_endpoint": "/adempiere-api/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
-    "applycoupon_endpoint": "/adempiere-api/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
+    "create_endpoint": "/adempiere-store/cart/create?token={{token}}",
+    "updateitem_endpoint": "/adempiere-store/cart/update?token={{token}}&cartId={{cartId}}",
+    "deleteitem_endpoint": "/adempiere-store/cart/delete?token={{token}}&cartId={{cartId}}",
+    "pull_endpoint": "/adempiere-store/cart/pull?token={{token}}&cartId={{cartId}}",
+    "totals_endpoint": "/adempiere-store/cart/totals?token={{token}}&cartId={{cartId}}",
+    "paymentmethods_endpoint": "/adempiere-store/cart/payment-methods?token={{token}}&cartId={{cartId}}",
+    "shippingmethods_endpoint": "/adempiere-store/cart/shipping-methods?token={{token}}&cartId={{cartId}}",
+    "shippinginfo_endpoint": "/adempiere-store/cart/shipping-information?token={{token}}&cartId={{cartId}}",
+    "collecttotals_endpoint": "/adempiere-store/cart/collect-totals?token={{token}}&cartId={{cartId}}",
+    "deletecoupon_endpoint": "/adempiere-store/cart/delete-coupon?token={{token}}&cartId={{cartId}}",
+    "applycoupon_endpoint": "/adempiere-store/cart/apply-coupon?token={{token}}&cartId={{cartId}}&coupon={{coupon}}"
   },
   "attributes": {
     "disablePersistentAttributesCache": false
@@ -619,7 +619,7 @@
     "waitForPlatformSync": false,
     "setupVariantByAttributeCode": true,
     "calculateBundlePriceByOptions": true,
-    "endpoint": "/adempiere-api/product",
+    "endpoint": "/adempiere-store/product",
     "defaultFilters": [
       "color",
       "erin_recommends",
@@ -677,7 +677,7 @@
   },
   "orders": {
     "directBackendSync": true,
-    "endpoint": "/adempiere-api/order",
+    "endpoint": "/adempiere-store/order",
     "payment_methods_mapping": {
     },
     "offline_orders": {
@@ -712,27 +712,27 @@
     ]
   },
   "reviews": {
-    "create_endpoint": "/adempiere-api/review/create"
+    "create_endpoint": "/adempiere-store/review/create"
   },
   "users": {
     "autoRefreshTokens": true,
     "loginAfterCreatePassword": true,
-    "endpoint": "/adempiere-api/user",
-    "history_endpoint": "/adempiere-api/user/order-history?token={{token}}&pageSize={{pageSize}}&currentPage={{currentPage}}",
-    "resetPassword_endpoint": "/adempiere-api/user/reset-password",
-    "createPassword_endpoint": "http://localhost:8080/adempiere-api/user/create-password",
-    "changePassword_endpoint": "/adempiere-api/user/change-password?token={{token}}",
-    "login_endpoint": "/adempiere-api/user/login",
-    "create_endpoint": "/adempiere-api/user/create",
-    "me_endpoint": "/adempiere-api/user/me?token={{token}}",
-    "refresh_endpoint": "/adempiere-api/user/refresh",
+    "endpoint": "/adempiere-store/user",
+    "history_endpoint": "/adempiere-store/user/order-history?token={{token}}&pageSize={{pageSize}}&currentPage={{currentPage}}",
+    "resetPassword_endpoint": "/adempiere-store/user/reset-password",
+    "createPassword_endpoint": "http://localhost:8080/adempiere-store/user/create-password",
+    "changePassword_endpoint": "/adempiere-store/user/change-password?token={{token}}",
+    "login_endpoint": "/adempiere-store/user/login",
+    "create_endpoint": "/adempiere-store/user/create",
+    "me_endpoint": "/adempiere-store/user/me?token={{token}}",
+    "refresh_endpoint": "/adempiere-store/user/refresh",
     "allowModification": ["firstname", "lastname", "email", "addresses"],
     "tokenInHeader": false
   },
   "stock": {
     "synchronize": true,
     "allowOutOfStockInCart": true,
-    "endpoint": "/adempiere-api/stock"
+    "endpoint": "/adempiere-store/stock"
   },
   "images": {
     "useExactUrlsNoProxy": false,
@@ -798,12 +798,12 @@
     "image/png": "7d"
   },
   "newsletter": {
-    "endpoint": "/adempiere-api/ext/mailchimp-subscribe/subscribe"
+    "endpoint": "/adempiere-store/ext/mailchimp-subscribe/subscribe"
   },
   "mailer": {
     "endpoint": {
-      "send": "/adempiere-api/ext/mail-service/send-email",
-      "token": "/adempiere-api/ext/mail-service/get-token"
+      "send": "/adempiere-store/ext/mail-service/send-email",
+      "token": "/adempiere-store/ext/mail-service/get-token"
     },
     "contactAddress": "contributors@vuestorefront.io",
     "sendConfirmation": true
@@ -831,8 +831,8 @@
     "id": false
   },
   "cms": {
-    "endpoint": "/adempiere-api/ext/cms-data/cms{{type}}/{{cmsId}}",
-    "endpointIdentifier": "/adempiere-api/ext/cms-data/cms{{type}}Identifier/{{cmsIdentifier}}/storeId/{{storeId}}"
+    "endpoint": "/adempiere-store/ext/cms-data/cms{{type}}/{{cmsId}}",
+    "endpointIdentifier": "/adempiere-store/ext/cms-data/cms{{type}}Identifier/{{cmsIdentifier}}/storeId/{{storeId}}"
   },
   "cms_block": {
     "max_count": 500
@@ -870,8 +870,8 @@
   },
   "urlModule": {
     "enableMapFallbackUrl": false,
-    "endpoint": "/adempiere-api/url",
-    "map_endpoint": "/adempiere-api/url/map"
+    "endpoint": "/adempiere-store/url",
+    "map_endpoint": "/adempiere-store/url/map"
   },
   "fastly": {
     "enabled":false
