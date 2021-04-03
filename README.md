@@ -14,17 +14,17 @@ docker pull erpya/adempiere-grpc-all-in-one
 docker pull erpya/proxy-adempiere-api
 ```
 
-Run the latest container with:
+Run the latest container with: https://hub.docker.com/r/erpya/adempiere-ecommerce
 ```shell
-    docker pull erpya/ecommerce
+    docker pull erpya/adempiere-ecommerce
 ```
 
 ```shell
 docker run -it -d \
     --name eCommerce-ADempiere \
-	-p 3000:3000 \
-	-e "API_URL=http:\/\/localhost:8085" \
-	-e "SERVER_PORT=3000" \
-	-e "VS_ENV=prod" \
-	erpya/ecommerce
+    -p 3000:3000 \
+    -e "API_URL=http:\/\/localhost:8085" \
+    -e "SERVER_PORT=3000" \
+    -e "VS_ENV=prod" \
+    erpya/adempiere-ecommerce
 ```
