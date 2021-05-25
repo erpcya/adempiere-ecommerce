@@ -276,9 +276,9 @@
       ],
       "filterFields": {},
       "breadcrumbFilterFields": {},
-      "categoriesRootCategorylId": 0,
-      "categoriesDynamicPrefetchLevel": 0,
-      "categoriesDynamicPrefetch": true,
+      "categoriesRootCategorylId": 2,
+      "categoriesDynamicPrefetchLevel": 2,
+      "categoriesDynamicPrefetch": false,
       "validSearchOptionsFromRouteParams": [
         "url-key",
         "slug",
