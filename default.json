@@ -736,7 +736,7 @@
   },
   "images": {
     "useExactUrlsNoProxy": false,
-    "baseUrl": "https://demo.vuestorefront.io/adempiere-store/img/",
+    "baseUrl": "API_URL/adempiere-store/img/",
     "useSpecificImagePaths": false,
     "paths": {
       "product": "/catalog/product"
