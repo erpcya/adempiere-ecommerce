@@ -4,8 +4,8 @@ LABEL maintainer="EdwinBetanc0urt@outlook.com; rMunoz@erpya.com; ySenih@erpya.co
         description="Front-end e-commerce for ADempiere"
 
 ENV VS_ENV=prod \
-        REPO_NAME="eCommerce" \
-        URL_REPO="https://github.com/adempiere/eCommerce.git" \
+        REPO_NAME="adempiere-ecommerce" \
+        URL_REPO="https://github.com/erpcya/adempiere-ecommerce.git" \
         SERVER_PORT="3000" \
         API_URL="http:\/\/localhost:8085" \
         STORE_INDEX="vue_storefront_catalog" \
